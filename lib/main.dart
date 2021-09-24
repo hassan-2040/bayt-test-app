@@ -1,5 +1,6 @@
 import 'package:bayt_test_app/helpers/constants.dart';
 import 'package:bayt_test_app/views/screens/login/login_screen.dart';
+import 'package:bayt_test_app/views/screens/sign_up/sign_up_screen.dart';
 import 'package:bayt_test_app/views/screens/welcome/welcome_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -24,6 +25,7 @@ class MyApp extends StatelessWidget {
       ),
       routes: {
         LoginScreen.route: (context) => const LoginScreen(),
+        SignUpScreen.route: (context) => const SignUpScreen(),
       },
       home: const WelcomeScreen(),
     );

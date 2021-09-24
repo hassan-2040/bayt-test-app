@@ -2,6 +2,7 @@
 import 'package:bayt_test_app/helpers/size_config.dart';
 import 'package:bayt_test_app/views/common_widgets/custom_elevated_button.dart';
 import 'package:bayt_test_app/views/screens/login/login_screen.dart';
+import 'package:bayt_test_app/views/screens/sign_up/sign_up_screen.dart';
 import 'package:bayt_test_app/views/screens/welcome/components/welcome_background.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter/material.dart';
@@ -44,7 +45,7 @@ class WelcomeBody extends StatelessWidget {
               text: 'SIGN UP',
               buttonColor: Theme.of(context).primaryColorLight,
               onPress: () {
-                print('sign up');
+                Navigator.of(context).pushNamed(SignUpScreen.route);
               },
             ),
           ],
