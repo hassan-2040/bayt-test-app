@@ -7,7 +7,10 @@ class HomePageInitial extends HomePageState {}
 
 class HomePageLoading extends HomePageState {}
 
-class HomePageSuccess extends HomePageState {}
+class HomePageSuccess extends HomePageState {
+  final List<ToDo> toDos;
+  HomePageSuccess(this.toDos);
+}
 
 class HomePageFailure extends HomePageState {
   final String errorMessage;
