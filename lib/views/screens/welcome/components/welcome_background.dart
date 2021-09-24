@@ -1,10 +1,10 @@
-import 'package:bayt_test_app/helpers/constants.dart';
+
 import 'package:bayt_test_app/helpers/size_config.dart';
 import 'package:flutter/material.dart';
 
-class Background extends StatelessWidget {
+class WelcomeBackground extends StatelessWidget {
   final Widget mainBody;
-  const Background({
+  const WelcomeBackground({
     Key? key,
     required this.mainBody,
   }) : super(key: key);
@@ -23,9 +23,9 @@ class Background extends StatelessWidget {
             child: Container(
               height: 200,
               width: 200,
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: primaryColorBackground,
+                color: Theme.of(context).backgroundColor,
               ),
             ),
           ),
@@ -35,9 +35,9 @@ class Background extends StatelessWidget {
             child: Container(
               height: 150,
               width: 150,
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: primaryColorBackground,
+                color: Theme.of(context).backgroundColor,
               ),
             ),
           ),
@@ -47,9 +47,9 @@ class Background extends StatelessWidget {
             child: Container(
               height: 100,
               width: 100,
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: primaryColorBackground,
+                color: Theme.of(context).backgroundColor,
               ),
             ),
           ),

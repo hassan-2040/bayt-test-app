@@ -1,5 +1,5 @@
 import 'package:bayt_test_app/helpers/size_config.dart';
-import 'package:bayt_test_app/views/screens/welcome/components/scaffold_body.dart';
+import 'package:bayt_test_app/views/screens/welcome/components/welcome_body.dart';
 import 'package:flutter/material.dart';
 
 class WelcomeScreen extends StatelessWidget {
@@ -9,7 +9,7 @@ class WelcomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return const Scaffold(
-      body: ScaffoldBody(),
+      body: WelcomeBody(),
     );
   }
 }
