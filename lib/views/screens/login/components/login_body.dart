@@ -3,6 +3,7 @@ import 'package:bayt_test_app/views/common_widgets/custom_elevated_button.dart';
 import 'package:bayt_test_app/views/common_widgets/custom_text_field.dart';
 import 'package:bayt_test_app/views/common_widgets/password_text_field.dart';
 import 'package:bayt_test_app/views/common_widgets/previous_account_check_button.dart';
+import 'package:bayt_test_app/views/screens/home/home_screen.dart';
 import 'package:bayt_test_app/views/screens/login/components/login_background.dart';
 import 'package:bayt_test_app/views/screens/sign_up/sign_up_screen.dart';
 import 'package:flutter/material.dart';
@@ -51,7 +52,7 @@ class LoginBody extends StatelessWidget {
               text: 'LOGIN',
               buttonColor: Theme.of(context).primaryColor,
               onPress: () {
-                print('log in button');
+                Navigator.of(context).pushReplacementNamed(HomeScreen.route);
               },
             ),
             const SizedBox(

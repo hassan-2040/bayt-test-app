@@ -1,8 +1,10 @@
 import 'package:bayt_test_app/helpers/constants.dart';
+import 'package:bayt_test_app/views/screens/home/home_screen.dart';
 import 'package:bayt_test_app/views/screens/login/login_screen.dart';
 import 'package:bayt_test_app/views/screens/sign_up/sign_up_screen.dart';
 import 'package:bayt_test_app/views/screens/welcome/welcome_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 
 void main() {
@@ -21,11 +23,16 @@ class MyApp extends StatelessWidget {
         primaryColor: primaryColor,
         primaryColorLight: primaryColorLight,
         backgroundColor: primaryColorBackground,
-        // primarySwatch: Colors.indigo,
+        appBarTheme: const AppBarTheme(
+          color: primaryColor,
+          systemOverlayStyle: SystemUiOverlayStyle.light,
+        ),
       ),
+
       routes: {
         LoginScreen.route: (context) => const LoginScreen(),
         SignUpScreen.route: (context) => const SignUpScreen(),
+        HomeScreen.route: (context) => const HomeScreen(),
       },
       home: const WelcomeScreen(),
     );
