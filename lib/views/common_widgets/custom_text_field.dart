@@ -4,11 +4,13 @@ import 'package:flutter/material.dart';
 class CustomTextField extends StatelessWidget {
   final String hintText;
   final IconData icon;
+  final TextEditingController controller;
 
   const CustomTextField({
     Key? key,
     required this.hintText,
     required this.icon,
+    required this.controller,
   }) : super(key: key);
 
   @override
@@ -21,6 +23,7 @@ class CustomTextField extends StatelessWidget {
         borderRadius: BorderRadius.circular(29),
       ),
       child: TextField(
+        controller: controller,
         cursorColor: Theme.of(context).primaryColor,
         decoration: InputDecoration(
           icon: Icon(

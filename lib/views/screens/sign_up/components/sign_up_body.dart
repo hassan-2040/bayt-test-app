@@ -1,4 +1,5 @@
 import 'package:bayt_test_app/helpers/size_config.dart';
+import 'package:bayt_test_app/services/authentication_service.dart';
 import 'package:bayt_test_app/views/common_widgets/custom_elevated_button.dart';
 import 'package:bayt_test_app/views/common_widgets/custom_text_field.dart';
 import 'package:bayt_test_app/views/common_widgets/password_text_field.dart';
@@ -9,8 +10,24 @@ import 'package:bayt_test_app/views/screens/sign_up/components/sign_up_backgroun
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class SignUpBody extends StatelessWidget {
+class SignUpBody extends StatefulWidget {
   const SignUpBody({Key? key}) : super(key: key);
+
+  @override
+  State<SignUpBody> createState() => _SignUpBodyState();
+}
+
+class _SignUpBodyState extends State<SignUpBody> {
+
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,21 +54,30 @@ class SignUpBody extends StatelessWidget {
             SizedBox(
               height: SizeConfig.screenHeight * 0.05,
             ),
-            const CustomTextField(
+            CustomTextField(
               hintText: 'Your Email',
               icon: Icons.person,
+              controller: _emailController,
             ),
             const SizedBox(
               height: 20,
             ),
-            const PasswordTextField(),
+            PasswordTextField(
+              controller: _passwordController,
+            ),
             const SizedBox(
               height: 20,
             ),
             CustomElevatedButton(
               text: 'SIGN UP',
               buttonColor: Theme.of(context).primaryColor,
-              onPress: () {
+              onPress: () async {
+                final _user =
+                    await AuthenticationService.signUpWithEmailAndPassword(
+                  email: 'new@email.com',
+                  password: 'password',
+                );
+                print(_user.email);
                 Navigator.of(context).pushReplacementNamed(HomeScreen.route);
               },
             ),

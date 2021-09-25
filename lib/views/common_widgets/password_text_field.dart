@@ -2,8 +2,10 @@ import 'package:bayt_test_app/helpers/size_config.dart';
 import 'package:flutter/material.dart';
 
 class PasswordTextField extends StatefulWidget {
+  final TextEditingController controller;
   const PasswordTextField({
     Key? key,
+    required this.controller,
   }) : super(key: key);
 
   @override
@@ -25,6 +27,7 @@ class _PasswordTextFieldState extends State<PasswordTextField> {
         borderRadius: BorderRadius.circular(29),
       ),
       child: TextField(
+        controller: widget.controller,
         cursorColor: Theme.of(context).primaryColor,
         obscureText: _obscureText,
         decoration: InputDecoration(

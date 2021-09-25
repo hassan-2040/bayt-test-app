@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "490448676343",
+    "project_id": "bayt-test-app",
+    "storage_bucket": "bayt-test-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:490448676343:android:22100b13b93bdeacefbaf2",
+        "android_client_info": {
+          "package_name": "com.example.bayt_test_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "490448676343-h9beniqn8kmsltdqc7oes19dukms786l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBPb4i4axpH2W2ZmBctysNgk2FYBhN9MRE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "490448676343-h9beniqn8kmsltdqc7oes19dukms786l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

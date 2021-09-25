@@ -1,3 +1,4 @@
+import 'package:bayt_test_app/services/authentication_service.dart';
 import 'package:bayt_test_app/views/screens/home/components/home_bottom_navigation_bar.dart';
 import 'package:bayt_test_app/views/screens/home/components/home_indexed_stack.dart';
 import 'package:bayt_test_app/views/screens/login/login_screen.dart';
@@ -30,7 +31,8 @@ class _HomeScreenState extends State<HomeScreen> {
         centerTitle: true,
         actions: [
           IconButton(
-            onPressed: () {
+            onPressed: () async {
+              await AuthenticationService.logOut();
               Navigator.of(context).pushReplacementNamed(LoginScreen.route);
             },
             icon: const Icon(

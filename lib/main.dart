@@ -2,12 +2,15 @@ import 'package:bayt_test_app/helpers/constants.dart';
 import 'package:bayt_test_app/views/screens/home/home_screen.dart';
 import 'package:bayt_test_app/views/screens/login/login_screen.dart';
 import 'package:bayt_test_app/views/screens/sign_up/sign_up_screen.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:bayt_test_app/views/screens/welcome/welcome_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
