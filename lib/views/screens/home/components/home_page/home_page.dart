@@ -18,10 +18,17 @@ class HomePage extends StatelessWidget {
           const SizedBox(
             height: 30,
           ),
-          Text(
-            'JSONPlaceholder Todos',
-            style: TextStyle(
-              fontSize: SizeConfig.textSizeSubHeading,
+          SizedBox(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  'JSONPlaceholder Todos',
+                  style: TextStyle(
+                    fontSize: SizeConfig.textSizeSubHeading,
+                  ),
+                ),
+              ],
             ),
           ),
           const Expanded(
