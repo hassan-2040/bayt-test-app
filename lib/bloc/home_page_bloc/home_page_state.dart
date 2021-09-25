@@ -5,12 +5,11 @@ abstract class HomePageState {}
 
 class HomePageInitial extends HomePageState {}
 
-class HomePageLoading extends HomePageState {}
+class HomePageInitialLoading extends HomePageState {}
 
-class HomePageSuccess extends HomePageState {
-  final List<ToDo> toDos;
-  HomePageSuccess(this.toDos);
-}
+class HomePageListLoading extends HomePageState {}
+
+class HomePageSuccess extends HomePageState {}
 
 class HomePageFailure extends HomePageState {
   final String errorMessage;

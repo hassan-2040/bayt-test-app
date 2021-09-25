@@ -5,9 +5,9 @@ class HomePageService {
   static final _dio = Dio();
   static const String _baseUrl = 'https://jsonplaceholder.typicode.com';
 
-  static Future<List<ToDo>> fetchAllTodos() async {
+  static Future<List<ToDo>> fetchTodos(int _pageNumber) async {
     try {
-      final _response = await _dio.get(_baseUrl + '/todos');
+      final _response = await _dio.get(_baseUrl + '/todos?_page=$_pageNumber');
 
       final List<ToDo> _tempTodos = [];
 

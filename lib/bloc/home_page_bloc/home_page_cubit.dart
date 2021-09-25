@@ -8,11 +8,27 @@ part 'home_page_state.dart';
 class HomePageCubit extends Cubit<HomePageState> {
   HomePageCubit() : super(HomePageInitial());
 
-  void getAllTodos() async {
-    emit(HomePageLoading());
+  final List<ToDo> todos = [];
+  int _page = 1;
+
+  Future<void> getTodos() async {
+
+    if (todos.isEmpty) {
+      emit(HomePageInitialLoading());
+    }
+
     try {
-      final List<ToDo> _todos = await HomePageService.fetchAllTodos();
-      emit(HomePageSuccess(_todos));
+
+      List<ToDo> _temp = [];
+      if(todos.isEmpty) {
+        _temp = await HomePageService.fetchTodos(_page);
+      } else {
+        _page++;
+        _temp = await HomePageService.fetchTodos(_page);
+      }
+      todos.addAll(_temp);
+      print('todo length ${todos.length}');
+      emit(HomePageSuccess());
     } catch (error) {
       emit(HomePageFailure(error.toString()));
     }

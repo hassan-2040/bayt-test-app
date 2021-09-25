@@ -1,6 +1,6 @@
 import 'package:bayt_test_app/views/screens/home/components/account_page.dart';
 import 'package:bayt_test_app/views/screens/home/components/checkout_page.dart';
-import 'package:bayt_test_app/views/screens/home/components/home_page.dart';
+import 'package:bayt_test_app/views/screens/home/components/home_page/home_page.dart';
 import 'package:bayt_test_app/views/screens/home/components/market_page.dart';
 import 'package:flutter/material.dart';
 
