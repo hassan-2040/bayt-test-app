@@ -1,3 +1,4 @@
+import 'package:bayt_test_app/helpers/enums.dart';
 import 'package:bayt_test_app/models/to_do.dart';
 import 'package:dio/dio.dart';
 
@@ -5,9 +6,37 @@ class HomePageService {
   static final _dio = Dio();
   static const String _baseUrl = 'https://jsonplaceholder.typicode.com';
 
-  static Future<List<ToDo>> fetchTodos(int _pageNumber) async {
+  static Future<List<ToDo>> fetchTodos({
+    required int pageNumber,
+    required SortById sort,
+    required ToDoStatus status,
+  }) async {
     try {
-      final _response = await _dio.get(_baseUrl + '/todos?_page=$_pageNumber');
+      final _sort = sort == SortById.desc ? 'desc' : 'asc';
+      bool? _status;
+      switch (status) {
+        case ToDoStatus.completed:
+          _status = true;
+          break;
+        case ToDoStatus.notCompleted:
+          _status = false;
+          break;
+        case ToDoStatus.all:
+          _status = null;
+          break;
+      }
+
+      late String _url;
+
+      if (_status != null) {
+        _url = _baseUrl + '/todos?_sort=id&_order=$_sort&_page=$pageNumber&completed=$_status';
+      } else {
+        _url = _baseUrl + '/todos?_sort=id&_order=$_sort&_page=$pageNumber';
+      }
+
+      print(_url);
+
+      final _response = await _dio.get(_url);
 
       final List<ToDo> _tempTodos = [];
 

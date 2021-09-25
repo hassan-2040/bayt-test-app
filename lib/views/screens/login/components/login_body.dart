@@ -91,12 +91,11 @@ class _LoginBodyState extends State<LoginBody> {
                 text: 'LOGIN',
                 buttonColor: Theme.of(context).primaryColor,
                 onPress: () {
-                  //TODO change after finish
-                  // _loginCubit.loginUser(
-                  //   email: _emailController.text,
-                  //   password: _passwordController.text,
-                  // );
-                  Navigator.pushReplacementNamed(context, HomeScreen.route);
+                  _loginCubit.loginUser(
+                    email: _emailController.text,
+                    password: _passwordController.text,
+                    context: context,
+                  );
                 },
               ),
               const SizedBox(

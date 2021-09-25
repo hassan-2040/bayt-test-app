@@ -96,6 +96,7 @@ class _SignUpBodyState extends State<SignUpBody> {
                   _signUpCubit.signUpUser(
                     email: _emailController.text,
                     password: _passwordController.text,
+                    context: context,
                   );
                 },
               ),

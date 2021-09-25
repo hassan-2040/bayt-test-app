@@ -2,6 +2,7 @@ import 'package:bayt_test_app/services/authentication_service.dart';
 import 'package:bayt_test_app/views/screens/home/components/home_bottom_navigation_bar.dart';
 import 'package:bayt_test_app/views/screens/home/components/home_indexed_stack.dart';
 import 'package:bayt_test_app/views/screens/home/components/home_page/components/filter_button.dart';
+import 'package:bayt_test_app/views/screens/home/components/home_page/components/filter_drawer.dart';
 import 'package:bayt_test_app/views/screens/login/login_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -26,7 +27,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: _selectedIndex == 0 ? const Drawer() : null,
+      drawer: _selectedIndex == 0 ? Drawer(child: FilterDrawer(),) : null,
       appBar: AppBar(
         leading: _selectedIndex == 0 ? const FilterButton() : null,
         automaticallyImplyLeading: _selectedIndex == 0,

@@ -18,17 +18,10 @@ class HomePage extends StatelessWidget {
           const SizedBox(
             height: 30,
           ),
-          SizedBox(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text(
-                  'JSONPlaceholder Todos',
-                  style: TextStyle(
-                    fontSize: SizeConfig.textSizeSubHeading,
-                  ),
-                ),
-              ],
+          Text(
+            'SEARCH BOX',
+            style: TextStyle(
+              fontSize: SizeConfig.textSizeSubHeading,
             ),
           ),
           const Expanded(

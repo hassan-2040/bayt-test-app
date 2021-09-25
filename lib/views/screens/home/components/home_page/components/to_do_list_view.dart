@@ -1,4 +1,5 @@
 import 'package:bayt_test_app/bloc/to_do_list_bloc/to_do_list_cubit.dart';
+import 'package:bayt_test_app/providers/generic_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -10,12 +11,13 @@ class ToDoListView extends StatefulWidget {
 }
 
 class _ToDoListViewState extends State<ToDoListView> {
-  final ToDoListCubit _toDoListCubit = ToDoListCubit();
+  late final ToDoListCubit _toDoListCubit;
   final ScrollController _scrollController = ScrollController();
   bool _loading = false;
 
   @override
   void initState() {
+    _toDoListCubit = context.read<GenericProvider>().toDoListCubit;
     _scrollController.addListener(_onScrollEnd);
     super.initState();
   }
@@ -43,6 +45,7 @@ class _ToDoListViewState extends State<ToDoListView> {
     return BlocBuilder<ToDoListCubit, ToDoListState>(
       bloc: _toDoListCubit..getTodos(),
       builder: (context, state) {
+        print('to do list view state has changed');
         if (state is ToDoListInitialLoading) {
           return const Center(
             child: SizedBox(
