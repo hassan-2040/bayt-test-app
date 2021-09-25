@@ -3,10 +3,10 @@ import 'package:bayt_test_app/services/home_page_service.dart';
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 
-part 'home_page_state.dart';
+part 'to_do_list_state.dart';
 
-class HomePageCubit extends Cubit<HomePageState> {
-  HomePageCubit() : super(HomePageInitial());
+class ToDoListCubit extends Cubit<ToDoListState> {
+  ToDoListCubit() : super(ToDoListInitial());
 
   final List<ToDo> todos = [];
   int _page = 1;
@@ -14,7 +14,7 @@ class HomePageCubit extends Cubit<HomePageState> {
   Future<void> getTodos() async {
 
     if (todos.isEmpty) {
-      emit(HomePageInitialLoading());
+      emit(ToDoListInitialLoading());
     }
 
     try {
@@ -28,9 +28,9 @@ class HomePageCubit extends Cubit<HomePageState> {
       }
       todos.addAll(_temp);
       print('todo length ${todos.length}');
-      emit(HomePageSuccess());
+      emit(ToDoListSuccess());
     } catch (error) {
-      emit(HomePageFailure(error.toString()));
+      emit(ToDoListFailure(error.toString()));
     }
   }
 }

@@ -1,7 +1,4 @@
-import 'package:bayt_test_app/bloc/home_page_bloc/home_page_cubit.dart';
-import 'package:bayt_test_app/models/to_do.dart';
-import 'package:bayt_test_app/views/common_widgets/feedback_widgets.dart';
-import 'package:bayt_test_app/views/common_widgets/feedback_widgets.dart';
+import 'package:bayt_test_app/bloc/to_do_list_bloc/to_do_list_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -13,7 +10,7 @@ class ToDoListView extends StatefulWidget {
 }
 
 class _ToDoListViewState extends State<ToDoListView> {
-  final HomePageCubit _homePageCubit = HomePageCubit();
+  final ToDoListCubit _toDoListCubit = ToDoListCubit();
   final ScrollController _scrollController = ScrollController();
   bool _loading = false;
 
@@ -35,7 +32,7 @@ class _ToDoListViewState extends State<ToDoListView> {
       setState(() {
         _loading = true;
       });
-      _homePageCubit.getTodos().then((_) => setState(() {
+      _toDoListCubit.getTodos().then((_) => setState(() {
             _loading = false;
           }));
     }
@@ -43,10 +40,10 @@ class _ToDoListViewState extends State<ToDoListView> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<HomePageCubit, HomePageState>(
-      bloc: _homePageCubit..getTodos(),
+    return BlocBuilder<ToDoListCubit, ToDoListState>(
+      bloc: _toDoListCubit..getTodos(),
       builder: (context, state) {
-        if (state is HomePageInitialLoading) {
+        if (state is ToDoListInitialLoading) {
           return const Center(
             child: SizedBox(
               height: 30,
@@ -54,17 +51,17 @@ class _ToDoListViewState extends State<ToDoListView> {
               child: CircularProgressIndicator.adaptive(),
             ),
           );
-        } else if (state is HomePageFailure) {
+        } else if (state is ToDoListFailure) {
           return Center(
             child: Text('error: ${state.errorMessage}'),
           );
-        } else if (state is HomePageSuccess) {
+        } else if (state is ToDoListSuccess) {
           return Stack(
             children: [
               SingleChildScrollView(
                 controller: _scrollController,
                 child: ListView.builder(
-                  itemCount: _homePageCubit.todos.length,
+                  itemCount: _toDoListCubit.todos.length,
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
                   itemBuilder: (ctx, index) {
@@ -84,16 +81,16 @@ class _ToDoListViewState extends State<ToDoListView> {
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             Text(
-                              _homePageCubit.todos[index].id.toString(),
+                              _toDoListCubit.todos[index].id.toString(),
                               style: const TextStyle(
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
                             Text(
-                              _homePageCubit.todos[index].title,
+                              _toDoListCubit.todos[index].title,
                             ),
                             Text(
-                              _homePageCubit.todos[index].completed.toString(),
+                              _toDoListCubit.todos[index].completed.toString(),
                             ),
                           ],
                         ),
