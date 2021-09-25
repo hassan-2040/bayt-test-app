@@ -58,4 +58,33 @@ class HomePageService {
       rethrow;
     }
   }
+
+  static Future<List<ToDo>> searchToDos(String _query) async {
+    try {
+
+      final String _url = _baseUrl + '/todos?q=$_query';
+
+      final _response = await _dio.get(_url);
+
+      final List<ToDo> _tempTodos = [];
+
+      final List _fetchedList = _response.data;
+
+      for (var todo in _fetchedList) {
+        _tempTodos.add(
+          ToDo(
+            id: todo['id'],
+            userId: todo['userId'],
+            title: todo['title'],
+            completed: todo['completed'],
+          ),
+        );
+      }
+
+      return _tempTodos;
+    } catch (error) {
+      rethrow;
+    }
+  }
+
 }

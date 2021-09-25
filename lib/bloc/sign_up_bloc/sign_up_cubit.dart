@@ -28,8 +28,7 @@ class SignUpCubit extends Cubit<SignUpState> {
 
       print('user local: ${_localUser.uid} and ${_localUser.email}');
 
-      context.read<GenericProvider>().setLocalUser(_localUser);
-      context.read<GenericProvider>().initializeToDoListCubit();
+      await context.read<GenericProvider>().onLogin(_localUser);
 
       emit(SignUpSuccess());
 
