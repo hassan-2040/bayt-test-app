@@ -90,7 +90,7 @@ class _LoginBodyState extends State<LoginBody> {
               CustomElevatedButton(
                 text: 'LOGIN',
                 buttonColor: Theme.of(context).primaryColor,
-                onPress: () async {
+                onPress: () {
                   _loginCubit.loginUser(
                     email: _emailController.text,
                     password: _passwordController.text,
