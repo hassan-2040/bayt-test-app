@@ -1,3 +1,4 @@
+import 'package:bayt_test_app/helpers/custom_error_responses.dart';
 import 'package:bayt_test_app/helpers/enums.dart';
 import 'package:bayt_test_app/models/to_do.dart';
 import 'package:bayt_test_app/services/home_page_service.dart';
@@ -24,8 +25,6 @@ class ToDoListCubit extends Cubit<ToDoListState> {
 
   Future<void> getTodos() async {
 
-    print('inside todos');
-
     if (todos.isEmpty) {
       emit(ToDoListInitialLoading());
     }
@@ -39,10 +38,10 @@ class ToDoListCubit extends Cubit<ToDoListState> {
         _temp = await HomePageService.fetchTodos(pageNumber: _page, sort: _sort, status: _status,);
       }
       todos.addAll(_temp);
-      print('todo length ${todos.length}');
+
       emit(ToDoListSuccess());
-    } catch (error) {
-      emit(ToDoListFailure(error.toString()));
+    } on Exception catch (error) {
+      emit(ToDoListFailure(customErrorResponses(error)));
     }
   }
 }

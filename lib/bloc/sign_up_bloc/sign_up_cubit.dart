@@ -1,3 +1,4 @@
+import 'package:bayt_test_app/helpers/custom_error_responses.dart';
 import 'package:bayt_test_app/models/local_user.dart';
 import 'package:bayt_test_app/providers/generic_provider.dart';
 import 'package:bayt_test_app/services/authentication_service.dart';
@@ -32,10 +33,8 @@ class SignUpCubit extends Cubit<SignUpState> {
 
       emit(SignUpSuccess());
 
-    } on FirebaseAuthException catch (error) {
-      emit(SignUpFailure(error.message.toString()));
-    } catch (error) {
-      emit(SignUpFailure(error.toString()));
+    } on Exception catch (error) {
+      emit(SignUpFailure(customErrorResponses(error)));
     }
   }
 }

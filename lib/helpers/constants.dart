@@ -6,4 +6,4 @@ const primaryColorBackground = Color(0xFFe5e3ff);
 
 //custom error codes
 const int firebaseAuthCreateUserError = -1; //user not found for some reason after creation
-const int firebaseAuthSignInUserError = -2;
+const int firebaseAuthSignInUserError = -2; //user not found for some reason after sign in

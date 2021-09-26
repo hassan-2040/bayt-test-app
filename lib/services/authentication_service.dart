@@ -19,10 +19,9 @@ class AuthenticationService {
       } else {
         throw firebaseAuthCreateUserError;
       }
-    } on FirebaseAuthException catch (error) {
-      throw error.message.toString();
-    } catch (error) {
-      throw error.toString();
+    }
+    catch (error) {
+      rethrow;
     }
   }
 
@@ -43,21 +42,16 @@ class AuthenticationService {
       } else {
         throw firebaseAuthSignInUserError;
       }
-    } on FirebaseAuthException catch (error) {
-      throw error.message.toString();
     } catch (error) {
-      throw error.toString();
+      rethrow;
     }
   }
 
   static Future<void> logOut() async {
     try {
       await _firebaseAuth.signOut();
-      print('logging out');
-    } on FirebaseAuthException catch (error) {
-      throw error.message.toString();
-    } catch (error) {
-      throw error.toString();
+    }  catch (error) {
+      rethrow;
     }
   }
 }

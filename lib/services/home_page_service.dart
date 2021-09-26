@@ -34,8 +34,6 @@ class HomePageService {
         _url = _baseUrl + '/todos?_sort=id&_order=$_sort&_page=$pageNumber';
       }
 
-      print(_url);
-
       final _response = await _dio.get(_url);
 
       final List<ToDo> _tempTodos = [];

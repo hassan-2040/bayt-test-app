@@ -1,3 +1,4 @@
+import 'package:bayt_test_app/helpers/custom_error_responses.dart';
 import 'package:bayt_test_app/models/to_do.dart';
 import 'package:bayt_test_app/services/home_page_service.dart';
 import 'package:bloc/bloc.dart';
@@ -19,15 +20,9 @@ class ToDoSearchCubit extends Cubit<ToDoSearchState> {
 
       searchResults = await HomePageService.searchToDos(_query);
 
-      print('searched');
-
       emit(ToDoSearchSuccess(searchResults));
-    } catch (error) {
-      emit(ToDoSearchFailure(error.toString()));
+    } on Exception catch (error) {
+      emit(ToDoSearchFailure(customErrorResponses(error)));
     }
-  }
-
-  void saveRecentSearches() async {
-
   }
 }
