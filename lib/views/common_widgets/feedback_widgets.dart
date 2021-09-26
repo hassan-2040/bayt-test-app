@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 
 class FeedbackWidgets {
   final BuildContext context;
@@ -31,7 +32,7 @@ class FeedbackWidgets {
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
       content: Text(snackBarText),
       action: SnackBarAction(
-        label: 'OK',
+        label: translate('common.snackBarButtonText'),
         onPressed: () {
           ScaffoldMessenger.of(context).hideCurrentSnackBar();
         },

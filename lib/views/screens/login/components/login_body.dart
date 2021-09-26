@@ -22,6 +22,8 @@ class LoginBody extends StatefulWidget {
 }
 
 class _LoginBodyState extends State<LoginBody> {
+  final _formKey = GlobalKey<FormState>();
+
   final LoginCubit _loginCubit = LoginCubit();
 
   final TextEditingController _emailController = TextEditingController();
@@ -32,6 +34,16 @@ class _LoginBodyState extends State<LoginBody> {
     _emailController.dispose();
     _passwordController.dispose();
     super.dispose();
+  }
+
+  void _submitLogin(){
+    if(_formKey.currentState!.validate()) {
+      _loginCubit.loginUser(
+        email: _emailController.text,
+        password: _passwordController.text,
+        context: context,
+      );
+    }
   }
 
   @override
@@ -53,62 +65,59 @@ class _LoginBodyState extends State<LoginBody> {
           }
         },
         child: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                translate('login.title'),
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: Theme.of(context).primaryColor,
-                  fontSize: SizeConfig.textSizeMainHeading,
+          child: Form(
+            key: _formKey,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  translate('login.title'),
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Theme.of(context).primaryColor,
+                    fontSize: SizeConfig.textSizeMainHeading,
+                  ),
                 ),
-              ),
-              SizedBox(
-                height: SizeConfig.screenHeight * 0.05,
-              ),
-              SvgPicture.asset(
-                "assets/images/login.svg",
-                height: SizeConfig.screenHeight * 0.35,
-              ),
-              SizedBox(
-                height: SizeConfig.screenHeight * 0.05,
-              ),
-              CustomTextField(
-                hintText: translate('login.emailHint'),
-                icon: Icons.person,
-                controller: _emailController,
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              PasswordTextField(
-                controller: _passwordController,
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              CustomElevatedButton(
-                text: translate('login.loginButton'),
-                buttonColor: Theme.of(context).primaryColor,
-                onPress: () {
-                  _loginCubit.loginUser(
-                    email: _emailController.text,
-                    password: _passwordController.text,
-                    context: context,
-                  );
-                },
-              ),
-              const SizedBox(
-                height: 30,
-              ),
-              PreviousAccountCheckButton(
-                press: () {
-                  Navigator.of(context)
-                      .pushReplacementNamed(SignUpScreen.route);
-                },
-              ),
-            ],
+                SizedBox(
+                  height: SizeConfig.screenHeight * 0.05,
+                ),
+                SvgPicture.asset(
+                  "assets/images/login.svg",
+                  height: SizeConfig.screenHeight * 0.35,
+                ),
+                SizedBox(
+                  height: SizeConfig.screenHeight * 0.05,
+                ),
+                CustomTextField(
+                  hintText: translate('login.emailHint'),
+                  icon: Icons.person,
+                  controller: _emailController,
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                PasswordTextField(
+                  controller: _passwordController,
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                CustomElevatedButton(
+                  text: translate('login.loginButton'),
+                  buttonColor: Theme.of(context).primaryColor,
+                  onPress: _submitLogin,
+                ),
+                const SizedBox(
+                  height: 30,
+                ),
+                PreviousAccountCheckButton(
+                  press: () {
+                    Navigator.of(context)
+                        .pushReplacementNamed(SignUpScreen.route);
+                  },
+                ),
+              ],
+            ),
           ),
         ),
       ),

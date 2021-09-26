@@ -27,8 +27,14 @@ class _PasswordTextFieldState extends State<PasswordTextField> {
         color: Theme.of(context).primaryColorLight,
         borderRadius: BorderRadius.circular(29),
       ),
-      child: TextField(
+      child: TextFormField(
         controller: widget.controller,
+        validator: (value) {
+          if (value!.isEmpty) {
+            return translate('errors.textFieldEmpty');
+          }
+          return null;
+        },
         cursorColor: Theme.of(context).primaryColor,
         obscureText: _obscureText,
         decoration: InputDecoration(

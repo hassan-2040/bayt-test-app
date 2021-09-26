@@ -2,6 +2,7 @@
 
 import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 
 String customErrorResponses(Exception _error) {
   String _response = '';
@@ -9,51 +10,50 @@ String customErrorResponses(Exception _error) {
   if (_error is FirebaseAuthException) {
     switch (_error.code) {
       case 'invalid-email':
-        _response = 'Invalid Email Provided. Please use your correct email.';
+        _response = translate('errors.firebase.invalidEmail');
         break;
       case 'email-already-in-use':
-        _response = 'Email already used. Please sign in or use a different email.';
+        _response = translate('errors.firebase.emailAlreadyInUse');
         break;
       case 'user-not-found':
-        _response = 'User with this email does not exist';
+        _response = translate('errors.firebase.userNotFound');
         break;
       case 'wrong-password':
-        _response = 'Incorrect password. Please try again.';
+        _response = translate('errors.firebase.wrongPassword');
         break;
       default:
-        _response = 'Cannot Authenticate for unknown error';
+        _response = translate('errors.firebase.unknown');
         break;
     }
   } else if (_error is DioError) {
     switch (_error.type) {
       case DioErrorType.cancel:
-        _response = 'Request to server was Cancelled';
+        _response = translate('errors.dio.requestCancelled');
         break;
       case DioErrorType.connectTimeout:
-        _response = 'Connection Timed Out';
+        _response = translate('errors.dio.connectionTimeOut');
         break;
       case DioErrorType.other:
         _response =
-        'Connection Failed due to internet';
+            translate('errors.dio.internetFailure');
         break;
       case DioErrorType.receiveTimeout:
-        _response = 'Receive Time out while communication with server';
+        _response = translate('errors.dio.receiveTimeOut');
         break;
       case DioErrorType.response:
-        _response =
-        'Invalid Status Code: ${_error.response?.statusCode}';
+        _response = translate('errors.dio.invalidResponse', args: {"statusCode" : _error.response?.statusCode});
         break;
       case DioErrorType.sendTimeout:
-        _response = 'Request Timed Out while sending to server';
+        _response = translate('errors.dio.requestTimeOut');
         break;
       default:
-        _response = 'Cannot process the request due to unknown error';
+        _response = translate('errors.dio.unknown');
         break;
     }
   } else if ( _error.toString() == '-1' || _error.toString() == '-2'  ){
-    _response = 'Could not fetch user for unknown reasons';
+    _response = translate('errors.custom.userNotFound');
   } else  {
-    _response = 'Unknown Error Occurred';
+    _response = translate('errors.unknown');
   }
   return _response;
 

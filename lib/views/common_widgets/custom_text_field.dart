@@ -1,5 +1,6 @@
 import 'package:bayt_test_app/helpers/size_config.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 
 class CustomTextField extends StatelessWidget {
   final String hintText;
@@ -22,8 +23,14 @@ class CustomTextField extends StatelessWidget {
         color: Theme.of(context).primaryColorLight,
         borderRadius: BorderRadius.circular(29),
       ),
-      child: TextField(
+      child: TextFormField(
         controller: controller,
+        validator: (value) {
+          if (value!.isEmpty) {
+            return translate('errors.textFieldEmpty');
+          }
+          return null;
+        },
         cursorColor: Theme.of(context).primaryColor,
         decoration: InputDecoration(
           icon: Icon(

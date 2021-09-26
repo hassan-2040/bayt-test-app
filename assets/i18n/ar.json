@@ -1,6 +1,30 @@
 {
   "common" : {
-    "passwordHint" : "كلمة السر خاصتك"
+    "passwordHint" : "كلمة السر خاصتك",
+    "snackBarButtonText" : "نعم"
+  },
+  "errors" : {
+    "textFieldEmpty" : "يجب ألا يكون فارغًا",
+    "unknown" : "حدث خطأ غير معروف",
+    "firebase" : {
+      "invalidEmail" : "تم تقديم بريد إلكتروني غير صالح. الرجاء استخدام بريدك الإلكتروني الصحيح.",
+      "emailAlreadyInUse" : "البريد الإلكتروني مستخدم بالفعل. الرجاء تسجيل الدخول أو استخدام بريد إلكتروني مختلف.",
+      "userNotFound" : "المستخدم بهذا البريد الإلكتروني غير موجود",
+      "wrongPassword" : "كلمة سر خاطئة. حاول مرة اخرى.",
+      "unknown" : "لا يمكن المصادقة لخطأ غير معروف"
+    },
+    "dio" : {
+      "requestCancelled" : "تم إلغاء طلب الخادم",
+      "connectionTimeOut" : "انتهت مدة الاتصال",
+      "internetFailure" : "فشل الاتصال بسبب الإنترنت",
+      "receiveTimeOut" : "استلم المهلة أثناء الاتصال بالخادم",
+      "invalidResponse" : "رمز الحالة غير صالح: {statusCode}",
+      "requestTimeOut" : "طلب انتهت المهلة أثناء الإرسال إلى الخادم",
+      "unknown" : "لا يمكن معالجة الطلب بسبب خطأ غير معروف"
+    },
+    "custom" : {
+      "userNotFetched" : "تعذر جلب المستخدم لأسباب غير معروفة"
+    }
   },
   "welcome" : {
     "title" : "أهلا بك!",

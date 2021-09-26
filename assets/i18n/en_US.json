@@ -1,7 +1,31 @@
 {
  "common" : {
-   "passwordHint" : "Your Password"
+   "passwordHint" : "Your Password",
+   "snackBarButtonText" : "OK"
  },
+  "errors" : {
+    "textFieldEmpty" : "must not be empty",
+    "unknown" : "Unknown Error Occurred",
+    "firebase" : {
+      "invalidEmail" : "Invalid Email Provided. Please use your correct email.",
+      "emailAlreadyInUse" : "Email already used. Please sign in or use a different email.",
+      "userNotFound" : "User with this email does not exist",
+      "wrongPassword" : "Incorrect password. Please try again.",
+      "unknown" : "Cannot Authenticate for unknown error"
+    },
+    "dio" : {
+      "requestCancelled" : "Request to server was Cancelled",
+      "connectionTimeOut" : "Connection Timed Out",
+      "internetFailure" : "Connection Failed due to internet",
+      "receiveTimeOut" : "Receive Time out while communication with server",
+      "invalidResponse" : "Invalid Status Code: {statusCode}",
+      "requestTimeOut" : "Request Timed Out while sending to server",
+      "unknown" : "Cannot process the request due to unknown error"
+    },
+    "custom" : {
+      "userNotFetched" : "Could not fetch user for unknown reasons"
+    }
+  },
   "welcome" : {
     "title" : "WELCOME",
     "loginButton" : "LOGIN",
