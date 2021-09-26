@@ -40,8 +40,8 @@ class _SignUpBodyState extends State<SignUpBody> {
   void _submitSignUp() {
     if(_formKey.currentState!.validate()){
       _signUpCubit.signUpUser(
-        email: _emailController.text,
-        password: _passwordController.text,
+        email: _emailController.text.trim(),
+        password: _passwordController.text.trim(),
         context: context,
       );
     }
@@ -64,7 +64,12 @@ class _SignUpBodyState extends State<SignUpBody> {
           }
 
           if (state is SignUpSuccess) {
-            Navigator.of(context).pushReplacementNamed(HomeScreen.route);
+            Navigator.pushNamedAndRemoveUntil(
+              context,
+              HomeScreen.route,
+                  (route) =>
+              false, //false to disable coming back from next screen via system button
+            );
           }
         },
         child: SingleChildScrollView(

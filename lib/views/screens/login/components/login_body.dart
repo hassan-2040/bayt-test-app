@@ -39,8 +39,8 @@ class _LoginBodyState extends State<LoginBody> {
   void _submitLogin(){
     if(_formKey.currentState!.validate()) {
       _loginCubit.loginUser(
-        email: _emailController.text,
-        password: _passwordController.text,
+        email: _emailController.text.trim(),
+        password: _passwordController.text.trim(),
         context: context,
       );
     }
@@ -61,7 +61,12 @@ class _LoginBodyState extends State<LoginBody> {
             FeedbackWidgets(context).showLoading();
           }
           if (state is LoginSuccess) {
-            Navigator.of(context).pushReplacementNamed(HomeScreen.route);
+            Navigator.pushNamedAndRemoveUntil(
+              context,
+              HomeScreen.route,
+                  (route) =>
+              false, //false to disable coming back from next screen via system button
+            );
           }
         },
         child: SingleChildScrollView(

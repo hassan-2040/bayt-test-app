@@ -39,16 +39,16 @@ class _HomeScreenState extends State<HomeScreen> {
         );
         break;
       case 2:
-        await context.read<GenericProvider>().logout();
-        Navigator.of(context).pushReplacementNamed(LoginScreen.route);
-        break;
-      case 3:
         final _locale = Localizations.localeOf(context).toString();
         if (_locale == 'ar') {
           changeLocale(context, 'en_US');
         } else {
           changeLocale(context, 'ar');
         }
+        break;
+      case 3:
+        await context.read<GenericProvider>().logout();
+        Navigator.of(context).pushReplacementNamed(LoginScreen.route);
         break;
     }
   }
@@ -62,7 +62,7 @@ class _HomeScreenState extends State<HomeScreen> {
             )
           : null,
       appBar: AppBar(
-        leading: _selectedIndex == 0 ? const FilterButton() : null,
+        leading: _selectedIndex == 0 ? FilterButton() : null,
         automaticallyImplyLeading: _selectedIndex == 0,
         title: _appBarTitle(),
         centerTitle: true,
@@ -80,12 +80,12 @@ class _HomeScreenState extends State<HomeScreen> {
                       PopupMenuItem<int>(
                         value: 2,
                         child: Text(
-                            translate('homeScreen.popUpButton.logOutButton')),
+                            translate('homeScreen.popUpButton.toggleLanguage')),
                       ),
                       PopupMenuItem<int>(
                         value: 3,
                         child: Text(
-                            translate('homeScreen.popUpButton.toggleLanguage')),
+                            translate('homeScreen.popUpButton.logOutButton')),
                       ),
                     ];
                   },
