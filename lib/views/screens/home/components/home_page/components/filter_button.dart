@@ -27,6 +27,5 @@ class FilterButton extends StatelessWidget {
         },
       ),
     );
-    ;
   }
 }

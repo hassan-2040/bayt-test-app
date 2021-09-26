@@ -7,17 +7,24 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:bayt_test_app/views/screens/welcome/welcome_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 import 'package:provider/provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  var delegate = await LocalizationDelegate.create(
+      fallbackLocale: 'en_US', supportedLocales: ['en_US', 'ar']);
   runApp(
-    MultiProvider(
-      providers: [
-        ListenableProvider<GenericProvider>(create: (_) => GenericProvider()),
-      ],
-      child: const MyApp(),
+    LocalizedApp(
+      delegate,
+      MultiProvider(
+        providers: [
+          ListenableProvider<GenericProvider>(create: (_) => GenericProvider()),
+        ],
+        child: const MyApp(),
+      ),
     ),
   );
 }
@@ -25,26 +32,36 @@ void main() async {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Bayt Test App',
-      theme: ThemeData(
-        primaryColor: primaryColor,
-        primaryColorLight: primaryColorLight,
-        backgroundColor: primaryColorBackground,
-        appBarTheme: const AppBarTheme(
-          color: primaryColor,
-          systemOverlayStyle: SystemUiOverlayStyle.light,
+    var localizationDelegate = LocalizedApp.of(context).delegate;
+    return LocalizationProvider(
+      state: LocalizationProvider.of(context).state,
+      child: MaterialApp(
+        title: 'Bayt Test App',
+        localizationsDelegates: [
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          localizationDelegate
+        ],
+        supportedLocales: localizationDelegate.supportedLocales,
+        locale: localizationDelegate.currentLocale,
+        theme: ThemeData(
+          primaryColor: primaryColor,
+          primaryColorLight: primaryColorLight,
+          backgroundColor: primaryColorBackground,
+          appBarTheme: const AppBarTheme(
+            color: primaryColor,
+            systemOverlayStyle: SystemUiOverlayStyle.light,
+          ),
         ),
+        routes: {
+          LoginScreen.route: (context) => const LoginScreen(),
+          SignUpScreen.route: (context) => const SignUpScreen(),
+          HomeScreen.route: (context) => const HomeScreen(),
+        },
+        home: const WelcomeScreen(),
       ),
-      routes: {
-        LoginScreen.route: (context) => const LoginScreen(),
-        SignUpScreen.route: (context) => const SignUpScreen(),
-        HomeScreen.route: (context) => const HomeScreen(),
-      },
-      home: const WelcomeScreen(),
     );
   }
 }
