@@ -1,5 +1,6 @@
 import 'package:bayt_test_app/helpers/size_config.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 
 class HomeBottomNavigationBar extends StatelessWidget {
   final int currentIndex;
@@ -35,22 +36,22 @@ class HomeBottomNavigationBar extends StatelessWidget {
           color: Colors.black,
           size: 15,
         ),
-        items: const <BottomNavigationBarItem>[
+        items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.home_outlined),
-            label: 'Home',
+            icon: const Icon(Icons.home_outlined),
+            label: translate('homeScreen.bottomNavigation.home'),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.card_giftcard),
-            label: 'Market',
+            icon: const Icon(Icons.card_giftcard),
+            label: translate('homeScreen.bottomNavigation.market'),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person_outline),
-            label: 'Account',
+            icon: const Icon(Icons.person_outline),
+            label: translate('homeScreen.bottomNavigation.account'),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_cart_outlined),
-            label: 'Checkout',
+            icon: const Icon(Icons.shopping_cart_outlined),
+            label: translate('homeScreen.bottomNavigation.checkout'),
           ),
         ],
       ),

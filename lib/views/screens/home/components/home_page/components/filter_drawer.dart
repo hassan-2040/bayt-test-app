@@ -5,6 +5,7 @@ import 'package:bayt_test_app/providers/generic_provider.dart';
 import 'package:bayt_test_app/views/common_widgets/custom_elevated_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 
 class FilterDrawer extends StatelessWidget {
   FilterDrawer({Key? key}) : super(key: key);
@@ -28,7 +29,7 @@ class FilterDrawer extends StatelessWidget {
                     height: 10,
                   ),
                   Text(
-                    'Sort By ID',
+                    translate('homeScreen.filterDrawer.sortById.title'),
                     style: TextStyle(
                       fontSize: SizeConfig.textSizeLarge,
                     ),
@@ -55,7 +56,7 @@ class FilterDrawer extends StatelessWidget {
                                 _filterDrawerCubit
                                     .updateSortById(SortById.desc);
                               },
-                        text: 'DESC',
+                        text: translate('homeScreen.filterDrawer.sortById.descending'),
                       ),
                       const SizedBox(
                         width: 10,
@@ -72,7 +73,7 @@ class FilterDrawer extends StatelessWidget {
                             : () {
                                 _filterDrawerCubit.updateSortById(SortById.asc);
                               },
-                        text: 'ASC',
+                        text: translate('homeScreen.filterDrawer.sortById.ascending'),
                       ),
                     ],
                   ),
@@ -86,7 +87,7 @@ class FilterDrawer extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    'To Do Status Filter',
+            translate('homeScreen.filterDrawer.toDoStatus.title'),
                     style: TextStyle(
                       fontSize: SizeConfig.textSizeLarge,
                     ),
@@ -113,7 +114,7 @@ class FilterDrawer extends StatelessWidget {
                                 _filterDrawerCubit
                                     .updateToDoStatus(ToDoStatus.all);
                               },
-                        text: 'All',
+                        text: translate('homeScreen.filterDrawer.toDoStatus.all'),
                       ),
                       const SizedBox(
                         width: 10,
@@ -131,7 +132,7 @@ class FilterDrawer extends StatelessWidget {
                                 _filterDrawerCubit
                                     .updateToDoStatus(ToDoStatus.completed);
                               },
-                        text: 'Done',
+                        text: translate('homeScreen.filterDrawer.toDoStatus.done'),
                       ),
                       const SizedBox(
                         width: 10,
@@ -149,7 +150,7 @@ class FilterDrawer extends StatelessWidget {
                                 _filterDrawerCubit
                                     .updateToDoStatus(ToDoStatus.notCompleted);
                               },
-                        text: 'Not Done',
+                        text: translate('homeScreen.filterDrawer.toDoStatus.notDone'),
                       ),
                       const SizedBox(
                         width: 10,
@@ -162,7 +163,7 @@ class FilterDrawer extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 40),
                     child: CustomElevatedButton(
-                      text: 'Apply Filters',
+                      text: translate('homeScreen.filterDrawer.applyFiltersButton'),
                       onPress: () {
                         final _toDoListCubit = context.read<GenericProvider>().toDoListCubit;
                         _toDoListCubit.applyFilters(_sorted, _status);

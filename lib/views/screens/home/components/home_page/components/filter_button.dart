@@ -1,4 +1,6 @@
+import 'package:bayt_test_app/helpers/size_config.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 
 class FilterButton extends StatelessWidget {
   const FilterButton({Key? key}) : super(key: key);
@@ -13,12 +15,13 @@ class FilterButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(10),
         ),
         // splashColor: Colors.grey,
-        child: const Padding(
-          padding: EdgeInsets.all(7.0),
+        child: Padding(
+          padding: const EdgeInsets.all(7.0),
           child: Text(
-            'Filters',
-            style: TextStyle(
+            translate('homeScreen.filterButton'),
+            style:  TextStyle(
               color: Colors.white,
+              fontSize: SizeConfig.textSizeSmall,
             ),
           ),
         ),

@@ -1,4 +1,60 @@
 {
-  "title": "!أهلا",
-  "Message" : "هذا عربي"
+  "common" : {
+    "passwordHint" : "كلمة السر خاصتك"
+  },
+  "welcome" : {
+    "title" : "أهلا بك!",
+    "loginButton" : "الدخول",
+    "signUpButton" : "اشتراك",
+    "toggleLanguage" : "تبديل اللغة"
+  },
+  "login" : {
+    "title" : "الدخول",
+    "emailHint" : "بريدك الالكتروني",
+    "loginButton" : "الدخول",
+    "noAccount" : "ليس لديك حساب?",
+    "noAccountSignUp" : "اشتراك"
+  },
+  "signUp" : {
+    "title" : "اشتراك",
+    "emailHint" : "بريدك الالكتروني",
+    "signUpButton" : "اشتراك",
+    "alreadyAccount" : "هل لديك حساب?",
+    "alreadyAccountSignIn" : "تسجيل الدخول"
+  },
+  "homeScreen" : {
+    "filterButton" : "المرشحات",
+    "popUpButton" : {
+      "searchButton" : "بحث",
+      "logOutButton" : "خروج",
+      "toggleLanguage" : "تبديل اللغة"
+    },
+    "filterDrawer" : {
+      "applyFiltersButton" : "تطبيق المرشحات",
+      "sortById" : {
+        "title" : "فرز حسب المعرف",
+        "ascending" : "تصاعدي",
+        "descending" : "تنازلي"
+      },
+      "toDoStatus" : {
+        "title" : "تصفية حالة المهام",
+        "all" : "الكل",
+        "done" : "مكتمل",
+        "notDone" : "غير مكتمل"
+      }
+
+    },
+    "appBarTitle" : {
+      "home" : "JSONPlaceholder لكى يفعل",
+      "market" : "سوق",
+      "account" : "الحساب",
+      "checkout" : "الحساب"
+    },
+    "bottomNavigation" : {
+      "home" : "منزل",
+      "market" : "سوق",
+      "account" : "الحساب",
+      "checkout" : "الحساب"
+    }
+  }
 }

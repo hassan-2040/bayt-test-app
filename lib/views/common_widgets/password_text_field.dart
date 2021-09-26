@@ -1,5 +1,6 @@
 import 'package:bayt_test_app/helpers/size_config.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 
 class PasswordTextField extends StatefulWidget {
   final TextEditingController controller;
@@ -44,7 +45,7 @@ class _PasswordTextFieldState extends State<PasswordTextField> {
               color: Theme.of(context).primaryColor,
             ),
           ),
-          hintText: 'Your Password',
+          hintText: translate('common.passwordHint'),
           border: InputBorder.none,
         ),
       ),

@@ -5,6 +5,7 @@ import 'package:bayt_test_app/views/screens/home/components/home_indexed_stack.d
 import 'package:bayt_test_app/views/screens/home/components/home_page/components/filter_button.dart';
 import 'package:bayt_test_app/views/screens/home/components/home_page/components/filter_drawer.dart';
 import 'package:bayt_test_app/views/screens/login/login_screen.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 
@@ -28,18 +29,26 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
-  void _onPopUpSelection(String value) async {
+  void _onPopUpSelection(int value) async {
     switch (value) {
-      case 'Search':
+      case 1:
         showSearch(
           context: context,
           delegate: CustomSearchDelegate(
               context.read<GenericProvider>().toDoSearchCubit),
         );
         break;
-      case 'Logout':
+      case 2:
         await context.read<GenericProvider>().logout();
         Navigator.of(context).pushReplacementNamed(LoginScreen.route);
+        break;
+      case 3:
+        final _locale = Localizations.localeOf(context).toString();
+        if (_locale == 'ar') {
+          changeLocale(context, 'en_US');
+        } else {
+          changeLocale(context, 'ar');
+        }
         break;
     }
   }
@@ -59,15 +68,26 @@ class _HomeScreenState extends State<HomeScreen> {
         centerTitle: true,
         actions: [
           _selectedIndex == 0
-              ? PopupMenuButton<String>(
+              ? PopupMenuButton<int>(
                   onSelected: _onPopUpSelection,
                   itemBuilder: (BuildContext context) {
-                    return {'Search', 'Logout'}.map((String selected) {
-                      return PopupMenuItem<String>(
-                        value: selected,
-                        child: Text(selected),
-                      );
-                    }).toList();
+                    return [
+                      PopupMenuItem<int>(
+                        value: 1,
+                        child: Text(
+                            translate('homeScreen.popUpButton.searchButton')),
+                      ),
+                      PopupMenuItem<int>(
+                        value: 2,
+                        child: Text(
+                            translate('homeScreen.popUpButton.logOutButton')),
+                      ),
+                      PopupMenuItem<int>(
+                        value: 3,
+                        child: Text(
+                            translate('homeScreen.popUpButton.toggleLanguage')),
+                      ),
+                    ];
                   },
                 )
               : IconButton(
@@ -93,10 +113,13 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Widget _appBarTitle() {
     String _title = '';
-    if (_selectedIndex == 0) _title = 'JSONPlaceHolder To Dos';
-    if (_selectedIndex == 1) _title = 'Marketplace';
-    if (_selectedIndex == 2) _title = 'Your Account';
-    if (_selectedIndex == 3) _title = 'Checkout';
+    if (_selectedIndex == 0) _title = translate('homeScreen.appBarTitle.home');
+    if (_selectedIndex == 1)
+      _title = translate('homeScreen.appBarTitle.market');
+    if (_selectedIndex == 2)
+      _title = translate('homeScreen.appBarTitle.account');
+    if (_selectedIndex == 3)
+      _title = translate('homeScreen.appBarTitle.checkout');
 
     return Text(_title);
   }

@@ -12,6 +12,7 @@ import 'package:bayt_test_app/views/screens/sign_up/sign_up_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 
 class LoginBody extends StatefulWidget {
   const LoginBody({Key? key}) : super(key: key);
@@ -56,7 +57,7 @@ class _LoginBodyState extends State<LoginBody> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                'LOGIN',
+                translate('login.title'),
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   color: Theme.of(context).primaryColor,
@@ -74,7 +75,7 @@ class _LoginBodyState extends State<LoginBody> {
                 height: SizeConfig.screenHeight * 0.05,
               ),
               CustomTextField(
-                hintText: 'Your Email',
+                hintText: translate('login.emailHint'),
                 icon: Icons.person,
                 controller: _emailController,
               ),
@@ -88,7 +89,7 @@ class _LoginBodyState extends State<LoginBody> {
                 height: 20,
               ),
               CustomElevatedButton(
-                text: 'LOGIN',
+                text: translate('login.loginButton'),
                 buttonColor: Theme.of(context).primaryColor,
                 onPress: () {
                   _loginCubit.loginUser(

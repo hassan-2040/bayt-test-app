@@ -25,6 +25,20 @@ class _WelcomeBodyState extends State<WelcomeBody> {
     super.didChangeDependencies();
   }
 
+  void _toggleLocale() {
+    if (_locale == 'ar') {
+      changeLocale(context, 'en_US');
+      setState(() {
+        _locale = 'en_US';
+      });
+    } else {
+      changeLocale(context, 'ar');
+      setState(() {
+        _locale = 'ar';
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return WelcomeBackground(
@@ -32,7 +46,7 @@ class _WelcomeBodyState extends State<WelcomeBody> {
         child: Column(
           children: [
             Text(
-              translate('title'),
+              translate('welcome.title'),
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 color: Theme.of(context).primaryColor,
@@ -50,14 +64,15 @@ class _WelcomeBodyState extends State<WelcomeBody> {
               height: SizeConfig.screenHeight * 0.05,
             ),
             CustomElevatedButton(
-              text: 'LOGIN',
+              text: translate('welcome.loginButton'),
               buttonColor: Theme.of(context).primaryColor,
               onPress: () {
                 Navigator.of(context).pushNamed(LoginScreen.route);
               },
             ),
+            const SizedBox(height: 10,),
             CustomElevatedButton(
-              text: 'SIGN UP',
+              text: translate('welcome.signUpButton'),
               buttonColor: Theme.of(context).primaryColorLight,
               onPress: () {
                 Navigator.of(context).pushNamed(SignUpScreen.route);
@@ -65,21 +80,9 @@ class _WelcomeBodyState extends State<WelcomeBody> {
             ),
             RawMaterialButton(
               constraints: const BoxConstraints(),
-              onPressed: () {
-                if (_locale == 'ar') {
-                  changeLocale(context, 'en_US');
-                  setState(() {
-                    _locale = 'en_US';
-                  });
-                } else {
-                  changeLocale(context, 'ar');
-                  setState(() {
-                    _locale = 'ar';
-                  });
-                }
-              },
+              onPressed: _toggleLocale,
               child: Text(
-                'Switch Language to ${_locale == 'ar' ? 'EN' : 'AR'}',
+                '${translate('welcome.toggleLanguage')} ${_locale == 'ar' ? 'EN' : 'AR'}',
                 style: TextStyle(
                   decoration: TextDecoration.underline,
                   fontSize: SizeConfig.textSizeSmall,

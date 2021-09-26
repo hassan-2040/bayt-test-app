@@ -1,4 +1,60 @@
 {
-  "title": "Hello!",
-  "Message" : "This is English"
+ "common" : {
+   "passwordHint" : "Your Password"
+ },
+  "welcome" : {
+    "title" : "WELCOME",
+    "loginButton" : "LOGIN",
+    "signUpButton" : "SIGN UP",
+    "toggleLanguage" : "Toggle Language to "
+  },
+  "login" : {
+    "title" : "LOGIN",
+    "emailHint" : "Your Email",
+    "loginButton" : "LOGIN",
+    "noAccount" : "Dont Have an Account?",
+    "noAccountSignUp" : "Sign Up"
+  },
+  "signUp" : {
+    "title" : "SIGN UP",
+    "emailHint" : "Your Email",
+    "signUpButton" : "SIGN UP",
+    "alreadyAccount" : "Already Have an Account?",
+    "alreadyAccountSignIn" : "Sign In"
+  },
+  "homeScreen" : {
+    "filterButton" : "Filters",
+    "popUpButton" : {
+      "searchButton" : "Search",
+      "logOutButton" : "Logout",
+      "toggleLanguage" : "Toggle Language"
+    },
+    "filterDrawer" : {
+      "applyFiltersButton" : "Apply Filters",
+      "sortById" : {
+        "title" : "Sort By ID",
+        "ascending" : "ASC",
+        "descending" : "DESC"
+      },
+      "toDoStatus" : {
+        "title" : "To Do Status Filter",
+        "all" : "All",
+        "done" : "Done",
+        "notDone" : "Not Done"
+      }
+
+    },
+    "appBarTitle" : {
+      "home" : "JSONPlaceholder To Dos",
+      "market" : "Market",
+      "account" : "Account",
+      "checkout" : "Checkout"
+    },
+    "bottomNavigation" : {
+      "home" : "Home",
+      "market" : "Market",
+      "account" : "Account",
+      "checkout" : "Checkout"
+    }
+  }
 }

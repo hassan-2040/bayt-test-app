@@ -12,6 +12,7 @@ import 'package:bayt_test_app/views/screens/sign_up/components/sign_up_backgroun
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 
 class SignUpBody extends StatefulWidget {
   const SignUpBody({Key? key}) : super(key: key);
@@ -58,7 +59,7 @@ class _SignUpBodyState extends State<SignUpBody> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                'SIGN UP',
+                translate('signUp.title'),
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   color: Theme.of(context).primaryColor,
@@ -76,7 +77,7 @@ class _SignUpBodyState extends State<SignUpBody> {
                 height: SizeConfig.screenHeight * 0.05,
               ),
               CustomTextField(
-                hintText: 'Your Email',
+                hintText: translate('signUp.emailHint'),
                 icon: Icons.person,
                 controller: _emailController,
               ),
@@ -90,7 +91,7 @@ class _SignUpBodyState extends State<SignUpBody> {
                 height: 20,
               ),
               CustomElevatedButton(
-                text: 'SIGN UP',
+                text: translate('signUp.signUpButton'),
                 buttonColor: Theme.of(context).primaryColor,
                 onPress: () {
                   _signUpCubit.signUpUser(
