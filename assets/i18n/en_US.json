@@ -45,7 +45,7 @@
 
     },
     "appBarTitle" : {
-      "home" : "JSONPlaceholder To Dos",
+      "home" : "To Dos",
       "market" : "Market",
       "account" : "Account",
       "checkout" : "Checkout"

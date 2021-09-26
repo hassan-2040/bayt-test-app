@@ -17,11 +17,13 @@ class FilterButton extends StatelessWidget {
         // splashColor: Colors.grey,
         child: Padding(
           padding: const EdgeInsets.all(7.0),
-          child: Text(
-            translate('homeScreen.filterButton'),
-            style:  TextStyle(
-              color: Colors.white,
-              fontSize: SizeConfig.textSizeSmall,
+          child: FittedBox(
+            child: Text(
+              translate('homeScreen.filterButton'),
+              style:  TextStyle(
+                color: Colors.white,
+                fontSize: SizeConfig.textSizeSmall,
+              ),
             ),
           ),
         ),
